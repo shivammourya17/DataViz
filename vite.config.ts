@@ -5,12 +5,14 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: "./", // ⚡ Important: Fixes white page & MIME type issues on Netlify
   server: {
     host: "::",
     port: 8080,
   },
   plugins: [
     react(),
+    
     mode === 'development' &&
     componentTagger(),
   ].filter(Boolean),
