@@ -27,15 +27,16 @@ const Hero = ({ onGetStarted }: { onGetStarted: () => void }) => {
         </p>
         
         <div className="flex justify-center animate-fade-in">
-          <Button 
-            onClick={onGetStarted}
-            size="lg" 
-            className="bg-gradient-to-r from-primary to-secondary text-white hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 text-lg px-8 py-6 glow font-medium"
-          >
-            Get Started
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
-        </div>
+  <Button 
+    onClick={() => window.open("https://datavizappapp-nc6vmo2lcrjngbecyqqnjk.streamlit.app/", "_blank")}
+    size="lg" 
+    className="bg-gradient-to-r from-primary to-secondary text-white hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 text-lg px-8 py-6 glow font-medium"
+  >
+    Get Started
+    <ArrowRight className="ml-2 w-5 h-5" />
+  </Button>
+</div>
+
       </div>
     </section>
   );
