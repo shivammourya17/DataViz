@@ -1,33 +1,28 @@
-// vite.config.ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import path from "path";
-import { componentTagger } from "lovable-tagger";
+import * as path from "path";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  base: "./", // Fixes white page & MIME type issues on static hosts
-  server: {
-    host: "0.0.0.0", // allow external access
-    port: 8080,
-    allowedHosts: [
-      "dataviz-h073.onrender.com", // your host
-      "localhost",
-      "127.0.0.1",
-    ],
-  },
-  plugins: [
-    react(), // React 18 + SWC JSX
-    mode === "development" && componentTagger(), // dev-only plugin
-  ].filter(Boolean),
+export default defineConfig({
+  base: "./", // fixes MIME type issues on static hosts
+  plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"), // path alias
     },
   },
   build: {
-    minify: "esbuild", // production minification
-    sourcemap: false,   // disable source maps
-    target: "es2022",   // modern JS output
+    minify: "esbuild",  // removes dev-only React code
+    sourcemap: false,
+    target: "es2022",   // modern JS
   },
-}));
+  server: {
+    host: "0.0.0.0",
+    port: 8080,
+    allowedHosts: [
+      "localhost",
+      "127.0.0.1",
+      "datavizxxstreamlitauthxxai.netlify.app"
+    ],
+  },
+});
